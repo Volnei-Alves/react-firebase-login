@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import api from "./Api";
 
+import Routes from "./routes";
 function App() {
-	return (
-		<div>
-			<h1>Projeto de Login com firebase</h1>
-		</div>
-	);
+	return <Routes />;
 }
 
 export default App;
