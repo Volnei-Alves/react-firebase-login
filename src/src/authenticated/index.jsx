@@ -6,7 +6,8 @@ import { FiLoader } from "react-icons/fi";
 
 import api from "../Api";
 
-import logo from "../assets/logo.png";
+import logo from "../assets/authenticated.jpg";
+import logoLogin from "../assets/logo_login.png";
 
 function Auth() {
 	const history = useHistory();
@@ -67,8 +68,8 @@ function Auth() {
 	/* ---------------------------------------------------------------------------- */
 
 	const LoadingRefresh = () => (
-		<div className="flex justify-center items-center h-screen  animate-spin">
-			<FiLoader size={34} className=" text-6x1 text-blue-500" />
+		<div className="flex justify-center items-center h-screen   ">
+			<FiLoader size={34} className="animate-spin text-6x1 text-blue-500" />
 		</div>
 	);
 
@@ -77,90 +78,94 @@ function Auth() {
 			{loading ? (
 				<LoadingRefresh />
 			) : (
-				<section className="flex  items-center justify-center h-screen">
-					<div>
-						<div className="mb-10 mr-2">
-							<img src={logo} width="150" alt="" />
-						</div>
+				<section className="grid grid-cols-2 h-screen">
+					<div className="flex justify-center items-center">
+						<img src={logo} alt="" />
+					</div>
 
-						<div className="w-full max-w-xs">
-							<form
-								className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-								onSubmit={loginUser}
-							>
-								<div className="mb-4">
-									<label
-										className="block text-gray-700 text-sm font-bold mb-2"
-										htmlFor="email"
-									>
-										Email
-									</label>
-									<input
-										className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-										id="email"
-										type="email"
-										value={email}
-										onChange={(e) => {
-											setEmail(e.target.value);
-										}}
-									/>
-								</div>
-								<div className="mb-6">
-									<label
-										className="block text-gray-700 text-sm font-bold mb-2"
-										htmlFor="password"
-									>
-										Senha
-									</label>
-									<input
-										className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-										id="password"
-										type="password"
-										value={password}
-										onChange={(e) => {
-											setPassword(e.target.value);
-										}}
-									/>
-									{errors ? (
-										<p className="text-red-500 text-sm italic">{errors}</p>
-									) : (
-										""
-									)}
-								</div>
-								<div className="flex items-center justify-between">
-									{bgDisabled ? (
-										<button
-											className=" bg-blue-500 opacity-25 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-											disabled
-										>
-											Entrar
-										</button>
-									) : (
-										<button
-											className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-											type="submit"
-										>
-											{loading ? (
-												<FiLoader
-													size={18}
-													className="animate-spin h-5 w-5 mr-3 "
-												/>
-											) : (
-												""
-											)}
-											Entrar
-										</button>
-									)}
-
-									<a
-										className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-										href="#"
-									>
-										Recupera Senha?
-									</a>
-								</div>
-							</form>
+					<div className="flex flex-col justify-center items-center bg-blue-200">
+						<div className="flex items-center p-8">
+							<img src={logoLogin} width="150" alt="" />
 						</div>
+						<form
+							className="w-1/2  bg-white shadow-2xl rounded px-12 pt-10 pb-8 mb-4"
+							onSubmit={loginUser}
+						>
+							<h3 className=" pb-5 text-2xl font-black text-gray-500">
+								Area de Login
+							</h3>
+							<div className="mb-4">
+								<label
+									className="block text-gray-500 text-sm font-bold mb-2"
+									htmlFor="email"
+								>
+									E-mail
+								</label>
+								<input
+									className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									id="email"
+									type="email"
+									value={email}
+									onChange={(e) => {
+										setEmail(e.target.value);
+									}}
+								/>
+							</div>
+							<div className="mb-6">
+								<label
+									className="block text-gray-500 text-sm font-bold mb-2"
+									htmlFor="password"
+								>
+									Senha
+								</label>
+								<input
+									className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+									id="password"
+									type="password"
+									value={password}
+									onChange={(e) => {
+										setPassword(e.target.value);
+									}}
+								/>
+								{errors ? (
+									<p className="text-red-500 text-sm italic">{errors}</p>
+								) : (
+									""
+								)}
+							</div>
+							<div className="flex items-center justify-between">
+								{bgDisabled ? (
+									<button
+										className=" bg-blue-500 opacity-25 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+										disabled
+									>
+										Entrar
+									</button>
+								) : (
+									<button
+										className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+										type="submit"
+									>
+										{loading ? (
+											<FiLoader
+												size={18}
+												className="animate-spin h-5 w-5 mr-3 "
+											/>
+										) : (
+											""
+										)}
+										Entrar
+									</button>
+								)}
+
+								<a
+									className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+									href="#"
+								>
+									Recupera Senha?
+								</a>
+							</div>
+						</form>
 					</div>
 				</section>
 			)}
