@@ -1,5 +1,5 @@
 
-# Login com React e Firebase auth
+# Login com React e Firebase auth (PORJETO EM CONSTRUÇÃO)
 
 Projeto com foco em autenticação com Firebase auth e Firebase Functions
 
