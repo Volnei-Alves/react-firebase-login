@@ -6,7 +6,7 @@ import jwt, { decode } from "jsonwebtoken";
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const { token } = useContext(AuthContext);
 
-	const tokenDecoded = jwt.decode(token);
+	/* const tokenDecoded = jwt.decode(token);
 	const timeStamp = new Date().getTime();
 
 	const validaToken = () => {
@@ -19,13 +19,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 				return true;
 			}
 		}
-	};
+	}; */
 
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				validaToken() ? <Component {...props} /> : <Redirect to="/" />
+				//validaToken()
+				token ? <Component {...props} /> : <Redirect to="/" />
 			}
 		/>
 	);

@@ -1,8 +1,10 @@
 import axios, { create } from 'axios';
 
 const api = create({
-	baseURL: 'http://localhost:5001/react-firebase-login-7ba06/us-central1/api',
+	baseURL: process.env.BASE_URL_API,
+
 });
+
 
 api.defaults.headers.common = {
 	...axios.defaults.headers.common,

@@ -27,8 +27,8 @@ function Auth() {
 			setErros("");
 		}
 	}
-
-	if (localStorage.getItem("token")) history.push("/home");
+	console.log(process.env.REACT_APP_URL_API);
+	if (localStorage.getItem("token")) history.push("/dashboard");
 
 	/* -------------------------------------------------------------------- */
 
@@ -36,6 +36,10 @@ function Auth() {
 		e.preventDefault();
 
 		setLoading(true);
+
+		//localStorage.setItem("token", api);
+
+		//window.location.reload();
 
 		api
 			.post("/login", {
@@ -67,16 +71,12 @@ function Auth() {
 
 	/* ---------------------------------------------------------------------------- */
 
-	const LoadingRefresh = () => (
-		<div className="flex justify-center items-center h-screen   ">
-			<FiLoader size={34} className="animate-spin text-6x1 text-blue-500" />
-		</div>
-	);
-
 	return (
 		<>
 			{loading ? (
-				<LoadingRefresh />
+				<div className="flex justify-center items-center h-screen   ">
+					<FiLoader size={34} className="animate-spin text-6x1 text-blue-500" />
+				</div>
 			) : (
 				<section className="grid grid-cols-2 h-screen">
 					<div className="flex justify-center items-center">
