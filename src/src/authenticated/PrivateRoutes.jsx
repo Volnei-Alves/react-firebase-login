@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "./authContext";
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const { token } = useContext(AuthContext);
 
-	/* const tokenDecoded = jwt.decode(token);
+	const tokenDecoded = jwt.decode(token);
 	const timeStamp = new Date().getTime();
 
 	const validaToken = () => {
@@ -19,14 +19,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 				return true;
 			}
 		}
-	}; */
+	};
 
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				//validaToken()
-				token ? <Component {...props} /> : <Redirect to="/" />
+				validaToken() ? <Component {...props} /> : <Redirect to="/" />
 			}
 		/>
 	);

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import jwt from "jsonwebtoken";
 
@@ -18,7 +19,6 @@ function Auth() {
 	const [bgDisabled, setBgDisabled] = useState(true);
 	const [errors, setErros] = useState("");
 
-	/* --------------------------------------------------------------------- */
 
 	// verify email e password
 	if (email && password) {
@@ -27,19 +27,14 @@ function Auth() {
 			setErros("");
 		}
 	}
-	console.log(process.env.REACT_APP_URL_API);
+
 	if (localStorage.getItem("token")) history.push("/dashboard");
 
-	/* -------------------------------------------------------------------- */
 
 	function loginUser(e) {
 		e.preventDefault();
 
 		setLoading(true);
-
-		//localStorage.setItem("token", api);
-
-		//window.location.reload();
 
 		api
 			.post("/login", {
@@ -47,16 +42,8 @@ function Auth() {
 				password: password,
 			})
 			.then((response) => {
-				const tokenDecoded = jwt.decode(
-					response.data.user.stsTokenManager.accessToken
-				);
-				localStorage.setItem("handle", JSON.stringify(tokenDecoded.handle));
-
-				localStorage.setItem(
-					"token",
-					response.data.user.stsTokenManager.accessToken
-				);
-				//history.push('/home')
+				console.log(response.data.token);
+				localStorage.setItem("token", response.data.token);
 				window.location.reload();
 			})
 			.catch((error) => {
@@ -68,8 +55,6 @@ function Auth() {
 				}
 			});
 	}
-
-	/* ---------------------------------------------------------------------------- */
 
 	return (
 		<>

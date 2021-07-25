@@ -1,10 +1,9 @@
 import axios, { create } from 'axios';
 
 const api = create({
-	baseURL: process.env.BASE_URL_API,
+	baseURL: process.env.REACT_APP_URL_API,
 
 });
-
 
 api.defaults.headers.common = {
 	...axios.defaults.headers.common,
